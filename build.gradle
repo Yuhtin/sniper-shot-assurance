@@ -1,8 +1,11 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
-group 'org.example'
+mainClassName = "com.yuhtin.ShotAssuranceCalculator"
+
+group 'com.yuhtin'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -10,8 +13,14 @@ repositories {
 }
 
 dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
 }
 
-test {
-    useJUnitPlatform()
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.yuhtin.ShotAssuranceCalculator'
+        )
+    }
 }

@@ -1,6 +1,14 @@
 package com.yuhtin.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-public record Shot(int shotId, int x, int y) {
+@Getter
+@AllArgsConstructor
+public class Shot {
+
+    private final int shotId;
+    private final int x;
+    private final int y;
 
 }

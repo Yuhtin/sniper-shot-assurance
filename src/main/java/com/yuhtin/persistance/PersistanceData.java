@@ -9,7 +9,7 @@ import java.util.Map;
 public class PersistanceData {
 
     public static final String LINE_SEPARATOR = "----------------------------------------";
-    public static final Map<Integer, Double> MAX_EUCLIDIAN_AVERAGE = new HashMap<>() {{
+    public static final HashMap<Integer, Double> MAX_EUCLIDIAN_AVERAGE = new HashMap<Integer, Double>() {{
         put(0, 0d);
         put(1, 0d);
         put(2, 45.18);

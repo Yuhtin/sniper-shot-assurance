@@ -31,9 +31,9 @@ public class ShotAssuranceCalculator {
         }
 
         // Lê as coordenadas dos tiros dados pelo atirador na silhueta e adiciona na lista SHOTS
-        for (int i = 1; i <= quantity; i++) {
+        for (int shot = 1; shot <= quantity; shot++) {
             System.out.println();
-            System.out.println("Tiro " + i + ":");
+            System.out.println("Tiro " + shot + ":");
 
             System.out.print("Informe a coordenada da linha (X): ");
             int x = scanner.nextInt();
@@ -43,7 +43,7 @@ public class ShotAssuranceCalculator {
 
             System.out.println(PersistanceData.LINE_SEPARATOR);
 
-            SHOTS.add(new Shot(i, x, y));
+            SHOTS.add(new Shot(shot, x, y));
         }
 
         // Calcular o tempo que o código levou para executar
@@ -56,10 +56,10 @@ public class ShotAssuranceCalculator {
 
         for (Shot first : SHOTS) {
             for (Shot second : SHOTS) {
-                if (first.shotId() == second.shotId()) continue;
+                if (first.getShotId() == second.getShotId()) continue;
 
                 // Calculando a distância euclidiana entre dois tiros
-                double sqrt = Math.sqrt(Math.pow(first.x() - second.x(), 2) + Math.pow(first.y() - second.y(), 2));
+                double sqrt = Math.sqrt(Math.pow(first.getX() - second.getX(), 2) + Math.pow(first.getY() - second.getY(), 2));
 
                 // Somando a distância encontrada
                 totalEuclideanDistance += sqrt;
@@ -82,14 +82,12 @@ public class ShotAssuranceCalculator {
         showPerformance(quantity, IQT);
 
         System.out.println();
-        System.out.println("Tempo de execução do código: " + (System.currentTimeMillis() - calculationInitialTime) + "ms");
+        System.out.println("Tempo para executar o calculo: " + (System.currentTimeMillis() - calculationInitialTime) + "ms");
     }
 
     public static void showPerformance(int shotQuantity, double impactQuality) {
         // Pega o tipo de resultado baseado na qualidade dos tiros na silhueta
         ResultTypes type = ResultTypes.getFromValue(impactQuality);
-
-        System.out.println(PersistanceData.LINE_SEPARATOR);
 
         System.out.println("TIROS: " + shotQuantity);
         System.out.println("IMPACTOS: " + shotQuantity);
